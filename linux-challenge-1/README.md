@@ -128,7 +128,7 @@ vi /etc/fstab
 Add the following line to the end of the file and save.
 
 ```
-/dev/mapper/dba_storage-volume_1 /mnt/dba_storage xfs defaults 0 0"
+/dev/mapper/dba_storage-volume_1 /mnt/dba_storage xfs defaults 0 0
 ```
 </details>
 
