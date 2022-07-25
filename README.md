@@ -19,4 +19,6 @@ The **Linux challenge series** is a set of hands-on challenges designed to test 
 - [Linux-Challenge-4](https://kodekloud.com/topic/linux-challenge-4/)
   - [Solutions](https://github.com/kodekloudhub/linux-challenges/tree/main/linux-challenge-4)
 
+- [Linux-Challenge-5](https://kodekloud.com/topic/linux-challenge-5/)
+  - [Solutions](https://github.com/kodekloudhub/linux-challenges/tree/main/linux-challenge-5)
 
