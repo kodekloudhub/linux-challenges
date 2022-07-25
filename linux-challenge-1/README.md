@@ -159,7 +159,7 @@ chmod 770 /mnt/dba_storage
 Pretty much everything done above, in the same order. We automate the `vi` step by using the append redirection to `/etc/fstab`
 
 <details>
-<summary>Single Script Automation</script>
+<summary>Single Script Automation</summary>
 
 ```bash
 # Start lab and paste this entire script to the command prompt.

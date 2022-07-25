@@ -132,7 +132,7 @@ Click the GoApp button above the terminal. You should get a login screen.
 Pretty much everything done above, in the same order. We automate the `vi` steps by using `sed` to do the insertions into `resolv.conf` and `nginx.conf` and we automate Bob's login using `curl`
 
 <details>
-<summary>Single Script Automation</script>
+<summary>Single Script Automation</summary>
 
 ```bash
 # Start lab and paste this entire script to the command prompt.
