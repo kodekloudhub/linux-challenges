@@ -7,16 +7,16 @@ The **Linux challenge series** is a set of hands-on challenges designed to test 
 
 # Sections
 
-- [Challenge-1](https://kodekloud.com/topic/linux-challenge-1/)
+- [Linux-Challenge-1](https://kodekloud.com/topic/linux-challenge-1/)
    - [Solutions](https://github.com/kodekloudhub/linux-challenges/tree/main/linux-challenge-1)
 
-- [Challenge-2](https://kodekloud.com/topic/linux-challenge-2/)
+- [Linux-Challenge-2](https://kodekloud.com/topic/linux-challenge-2/)
   - [Solutions](https://github.com/kodekloudhub/linux-challenges/tree/main/linux-challenge-2)
 
-- [Challenge-3](https://kodekloud.com/topic/linux-challenge-3/)
+- [Linux-Challenge-3](https://kodekloud.com/topic/linux-challenge-3/)
   - [Solutions](https://github.com/kodekloudhub/linux-challenges/tree/main/linux-challenge-3)
 
-- [Challenge-4](https://kodekloud.com/topic/linux-challenge-4/)
+- [Linux-Challenge-4](https://kodekloud.com/topic/linux-challenge-4/)
   - [Solutions](https://github.com/kodekloudhub/linux-challenges/tree/main/linux-challenge-4)
 
 
