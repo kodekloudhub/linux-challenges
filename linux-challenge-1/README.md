@@ -46,7 +46,7 @@ usermod -G dba_users bob
 ### /dev/vdb
 
 <details>
-<summary>Create a Physical Volume for "/dev/vdb"V</summary>
+<summary>Create a Physical Volume for "/dev/vdb"</summary>
 
 ```bash
 pvcreate /dev/vdb
