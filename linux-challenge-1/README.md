@@ -27,10 +27,8 @@ yum install -y lvm2
 
 ### dba_users
 
-Create a group called "dba_users" and add the user called 'bob' to this group
-
 <details>
-<summary>Create the group</summary>
+<summary>Create a group called "dba_users" and add the user called 'bob' to this group</summary>
 
 ```bash
 groupadd dba_users
@@ -47,10 +45,8 @@ usermod -G dba_users bob
 
 ### /dev/vdb
 
-Create a Physical Volume for "/dev/vdb"
-
 <details>
-<summary>Create PV</summary>
+<summary>Create a Physical Volume for "/dev/vdb"V</summary>
 
 ```bash
 pvcreate /dev/vdb
@@ -59,10 +55,8 @@ pvcreate /dev/vdb
 
 ### /dev/vdc
 
-Create a Physical Volume for "/dev/vdc"
-
 <details>
-<summary>Create PV</summary>
+<summary>Create a Physical Volume for "/dev/vdc"</summary>
 
 ```bash
 pvcreate /dev/vdc
@@ -71,10 +65,8 @@ pvcreate /dev/vdc
 
 ### volume-group
 
-Create a volume group called "dba_storage" using the physical volumes "/dev/vdb" and "/dev/vdc"
-
 <details>
-<summary>Create VG</summary>
+<summary>Create a volume group called "dba_storage" using the physical volumes "/dev/vdb" and "/dev/vdc"</summary>
 
 ```bash
 vgcreate dba_storage /dev/vdb /dev/vdc
@@ -83,10 +75,8 @@ vgcreate dba_storage /dev/vdb /dev/vdc
 
 ### lvm
 
-Create an "lvm" called "volume_1" from the volume group called "dba_storage". Make use of the entire space available in the volume group.
-
 <details>
-<summary>Create LV</summary>
+<summary>Create an "lvm" called "volume_1" from the volume group called "dba_storage". Make use of the entire space available in the volume group.</summary>
 
 ```bash
 lvcreate -n volume_1 -l 100%FREE dba_storage
@@ -95,20 +85,16 @@ lvcreate -n volume_1 -l 100%FREE dba_storage
 
 ### persistent-mountpoint
 
-Format the lvm volume "volume_1" as an "XFS" filesystem
-
 <details>
-<summary>Format</summary>
+<summary>Format the lvm volume "volume_1" as an "XFS" filesystem</summary>
 
 ```bash
 mkfs.xfs /dev/dba_storage/volume_1
 ```
 </details>
 
-Mount the filesystem at the path "/mnt/dba_storage".
-
 <details>
-<summary>Mount</summary>
+<summary>Mount the filesystem at the path "/mnt/dba_storage".</summary>
 
 ```bash
 mkdir -p /mnt/dba_storage
@@ -116,10 +102,8 @@ mount -t xfs /dev/dba_storage/volume_1 /mnt/dba_storage
 ```
 </details>
 
-Make sure that this mount point is persistent across reboots with the correct default options.
-
 <details>
-<summary>Make persistent</summary>
+<summary>Make sure that this mount point is persistent across reboots with the correct default options.</summary>
 
 ```bash
 vi /etc/fstab
@@ -132,22 +116,18 @@ Add the following line to the end of the file and save.
 ```
 </details>
 
-### group-permissions
-
-Ensure that the mountpoint "/mnt/dba_storage" has the group ownership set to the "dba_users" group
+### group-permission
 
 <details>
-<summary>Set group permission</summary>
+<summary>Ensure that the mountpoint "/mnt/dba_storage" has the group ownership set to the "dba_users" group</summary>
 
 ```bash
 chown :dba_users /mnt/dba_storage
 ```
 </details>
 
-### Ensure that the mount point "/mnt/dba_storage" has "read/write" and execute permissions for the owner and group and no permissions for anyone else.
-
 <details>
-<summary>Set directory permission</summary>
+<summary>Ensure that the mount point "/mnt/dba_storage" has "read/write" and execute permissions for the owner and group and no permissions for anyone else.</summary>
 
 ```bash
 chmod 770 /mnt/dba_storage
