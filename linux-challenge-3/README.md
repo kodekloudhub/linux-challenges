@@ -308,7 +308,7 @@ usermod -G admins natasha
 #
 # devs
 #
-################################## Make sure all users under "admins" group can run all commands with "sudo" and without entering any password.
+##################################
 
 # Create a group called "devs"
 groupadd devs
@@ -317,7 +317,7 @@ groupadd devs
 #
 # ray
 #
-################################## Make sure all users under "admins" group can run all commands with "sudo" and without entering any password.
+#################################
 
 # Create a user called "ray" , change his login shell to "/bin/sh"
 useradd -s /bin/sh ray
@@ -330,7 +330,7 @@ usermod -G devs ray
 #
 # lisa
 #
-##################################
+#################################
 
 # Create a user called "lisa" , change her login shell to "/bin/sh"
 useradd -s /bin/sh lisa
@@ -365,7 +365,7 @@ setfacl -m g:admins:rwx /data
 #
 # Sudo
 #
-##################################
+#################################
 
 # Make sure all users under "admins" group can run all commands with "sudo" and without entering any password.
 echo '%admins ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
@@ -374,7 +374,7 @@ echo '%admins ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 #
 # sudo(dnf)
 #
-##################################
+#################################
 
 # Make sure all users under "devs" group can only run the "dnf" command with "sudo" and without entering any password
 echo '%devs ALL=(ALL) NOPASSWD:/usr/bin/dnf' >> /etc/sudoers
