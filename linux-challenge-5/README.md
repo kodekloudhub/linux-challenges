@@ -196,7 +196,7 @@ We will find two lines beginning `#auth` which relate to the `wheel` group. Unco
 
 # Automate the entire lab in a single script!
 
-Pretty much everything done above, in the same order. We automate the edit of `/etc/hosts` with an append redirect, and `crontab` with the following one-line trick which breaks down as follows:
+Pretty much everything done above, in the same order. We automate the edit of `/etc/hosts` with an append redirect, the script creation by redirecting a [heredoc](https://linuxize.com/post/bash-heredoc/) with `cat` and each `crontab` entry with the following one-line trick which breaks down as follows:
 
 * `(` - begin subshell - groups the commands within the parens.
 * `crontab -l` - list current crontab entries
