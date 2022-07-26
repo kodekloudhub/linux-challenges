@@ -206,6 +206,8 @@ Pretty much everything done above, in the same order. We automate the edit of `/
 * `)` - end subshell
 * `| crontab -` - `crontab` will ingest all the above output and create a new crontab.
 
+Note that in the real world, you would *not* store the actual password in a script like this! You would get a pre-generated password from a secure system like Hashicorp Vault using its CLI, manually authenticating yourself with Vault before running your user setup script.
+
 <details>
 <summary>Single Script Automation</summary>
 
