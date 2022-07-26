@@ -238,6 +238,14 @@ Enter the following line at the end of the file and save
 <details>
 <summary>Edit the disk quota for the group called "devs". Limit the amount of storage space it can use (not inodes). Set a "soft" limit of "100MB" and a "hard" limit of "500MB" on "/data" partition.</summary>
 
+First, determine the device path for `/data`
+
+```bash
+mount | grep '/data'
+```
+
+Then set the quota on the device
+
 ```bash
 setquota -g devs 100M 500M 0 0 /dev/vdb1
 ```
