@@ -250,7 +250,7 @@ Then set the quota on the device
 setquota -g devs 100M 500M 0 0 /dev/vdb1
 ```
 
-[Manual page](https://linux.die.net/man/8/setquota)
+[Manual page](https://linux.die.net/man/8/setquota) - First form of the command. Inode limits are set to zero, meaning unlimited.
 
 </details>
 
