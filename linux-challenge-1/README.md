@@ -2,7 +2,7 @@
 
 The database server called centos-host is running short on space! You have been asked to add an LVM volume for the Database team using some of the existing disks on this server.
 
-All the tasks require you to be root, so the fist step is to become root
+All the tasks require you to be root, so the first step is to become root
 
 ```bash
 sudo -i

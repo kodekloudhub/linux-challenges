@@ -2,7 +2,7 @@
 
 We got a couple of tasks that need to be done on `centos-host` server. Most of these tasks are dependent on each other but not all of them.
 
-All the tasks require you to be root, so the fist step is to become root
+All the tasks require you to be root, so the first step is to become root
 
 ```bash
 sudo -i

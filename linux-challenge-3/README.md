@@ -2,7 +2,7 @@
 
 Some new developers have joined our team, so we need to create some `users/groups` and further need to setup some `permissions` and `access rights` for them.
 
-All the tasks require you to be root, so the fist step is to become root
+All the tasks require you to be root, so the first step is to become root
 
 ```bash
 sudo -i

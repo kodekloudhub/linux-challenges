@@ -6,7 +6,7 @@ Some of our apps generate some raw data and store the same in `/home/bob/preserv
 
 
 
-All the tasks require you to be root, so the fist step is to become root
+All the tasks require you to be root, so the first step is to become root
 
 ```bash
 sudo -i
