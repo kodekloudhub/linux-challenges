@@ -135,7 +135,6 @@ Pretty much everything done above, in the same order. We automate the `vi` steps
 <summary>Single Script Automation</summary>
 
 ```bash
-{
 # Start lab and paste this entire script to the command prompt.
 # When it completes, press the check button.
 sudo -i
@@ -215,6 +214,5 @@ systemctl start nginx
 
 # bob is able to login into GoApp using username "test" and password "test"
 curl -u test:test http://localhost:80 || echo -e "\n\nBob cannot log in!"
-}
 ```
 </details>
