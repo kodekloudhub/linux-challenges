@@ -152,6 +152,7 @@ Pretty much everything done above, in the same order. We automate the creation o
 <summary>Single Script Automation</summary>
 
 ```bash
+{
 # Start lab and paste this entire script to the command prompt.
 # When it completes, press the check button.
 sudo -i
@@ -235,5 +236,6 @@ chmod +x /home/bob/filter.sh
 
 # Execute our script
 /home/bob/filter.sh
+}
 ```
 </details>

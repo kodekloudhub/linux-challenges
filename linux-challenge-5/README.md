@@ -212,6 +212,7 @@ Note that in the real world, you would *not* store the actual password in a scri
 <summary>Single Script Automation</summary>
 
 ```bash
+{
 # Start lab and paste this entire script to the command prompt.
 # When it completes, press the check button.
 sudo -i
@@ -332,5 +333,6 @@ chmod +x /home/bob/container-stop.sh
 # Edit the PAM configuration file for the "su" utility  ... etc.
 # Here we have to uncomment both lines starting #auth
 sed -i 's/#auth/auth/' /etc/pam.d/su
+}
 ```
 </details>

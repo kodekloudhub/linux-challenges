@@ -142,6 +142,7 @@ Pretty much everything done above, in the same order. We automate the `vi` step 
 <summary>Single Script Automation</summary>
 
 ```bash
+{
 # Start lab and paste this entire script to the command prompt.
 # When it completes, press the check button.
 sudo -i
@@ -183,6 +184,7 @@ echo "/dev/mapper/dba_storage-volume_1 /mnt/dba_storage xfs defaults 0 0" >> /et
 chown :dba_users /mnt/dba_storage
 # Ensure that the mount point "/mnt/dba_storage" has "read/write" and execute permissions for the owner and group and no permissions for anyone else.
 chmod 770 /mnt/dba_storage
+}
 ```
 
 </details>

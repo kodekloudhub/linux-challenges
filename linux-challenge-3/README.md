@@ -264,6 +264,7 @@ Note that in the real world, you would *not* store the actual passwords in a scr
 <summary>Single Script Automation</summary>
 
 ```bash
+{
 # Start lab and paste this entire script to the command prompt.
 # When it completes, press the check button.
 sudo -i
@@ -396,3 +397,6 @@ echo '@devs            -       nproc           30' >> /etc/security/limits.conf
 
 # Edit the disk quota for the group called "devs"...
 setquota -g devs 100M 500M 0 0 /dev/vdb1
+}
+```
+</details>
