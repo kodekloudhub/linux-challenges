@@ -141,11 +141,19 @@ Pretty much everything done above, in the same order. We automate the `vi` step 
 <details>
 <summary>Single Script Automation</summary>
 
+First, become root
+
+```bash
+sudo -i
+```
+
+Then
+
+
 ```bash
 {
-# Start lab and paste this entire script to the command prompt.
+# Paste this entire script to the command prompt.
 # When it completes, press the check button.
-sudo -i
 
 ## Install lvm
 

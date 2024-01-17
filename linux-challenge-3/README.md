@@ -263,12 +263,19 @@ Note that in the real world, you would *not* store the actual passwords in a scr
 <details>
 <summary>Single Script Automation</summary>
 
+First, become root
+
+```bash
+sudo -i
+```
+
+Then
+
+
 ```bash
 {
-# Start lab and paste this entire script to the command prompt.
+# Paste this entire script to the command prompt.
 # When it completes, press the check button.
-sudo -i
-
 
 #################################
 #
