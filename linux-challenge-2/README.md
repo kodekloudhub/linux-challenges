@@ -146,7 +146,6 @@ Then
 {
 # Paste this entire script to the command prompt.
 # When it completes, press the check button.
-sudo -i
 
 #################################
 #
