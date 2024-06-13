@@ -81,12 +81,6 @@ firewall-cmd --reload
 <details>
 <summary>Start GoApp by running the "nohup go run main.go &" command from "/home/bob/go-app/" directory</summary>
 
-**Note** As of June 2024 there is an issue with the golang installation and you may see errors performing this step. Until it is fixed, use the following workaround:
-
-```
-sudo yum reinstall -y golang golang-bin
-```
-
 Run the go app.
 
 ```bash
