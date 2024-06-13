@@ -81,21 +81,22 @@ firewall-cmd --reload
 <details>
 <summary>Start GoApp by running the "nohup go run main.go &" command from "/home/bob/go-app/" directory</summary>
 
+**Note** As of June 2024 there is an issue with the golang installation and you may see errors performing this step. Until it is fixed, use the following workaround:
+
+```
+sudo yum reinstall -y golang golang-bin
+```
+
+Run the go app.
+
 ```bash
 pushd /home/bob/go-app
 nohup go run main.go &
 popd
 ```
-</details>
 
-You can use the following to determine when the go app is fully started. Re-run it periodically till the grep returns a match.
+Although the command prompt will return immediately because the process has been started as a background task, it will take 2-3 minutes before it is actually running due to the time it takes to compile. While that is happening, do the nginx configuration.
 
-<details>
-<summary>Check go app is running</summary>
-
-```bash
-ps -faux | grep -P '/tmp/go-build\d+/\w+/exe/main'
-```
 </details>
 
 ### Nginx
@@ -103,15 +104,62 @@ ps -faux | grep -P '/tmp/go-build\d+/\w+/exe/main'
 <details>
 <summary>Configure Nginx as a reverse proxy for the GoApp so that we can access the GoApp on port "80"</summary>
 
+The GoApp itself is listening on port `8081`. By configuring nginx as a reverse proxy listening on port `80` we can redirect the port `80` request somwhere else, in this case on the same machine but on port `8081`.
+
 ```bash
 vi /etc/nginx/nginx.conf
 ```
 
-At line 48 insert the following line after `location / {`
+We need to create a new `location` stanza for the root path within the `server {` stanza and redirect anything arriving there to the go app which is running on `http://localhost:8081`. For this we use a [proxy_pass](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/#:~:text=other%20than%20HTTP.-,Passing%20a%20Request%20to%20a%20Proxied%20Server,-When%20NGINX%20proxies) directive within the `location` stanza.
 
+The existing server stanza looks like this
+
+```text
+    server {
+        listen       80;
+        listen       [::]:80;
+        server_name  _;
+        root         /usr/share/nginx/html;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        error_page 404 /404.html;
+        location = /404.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+        }
+    }
 ```
+
+Within this, insert the new location stanza so it looks like this
+
+```text
+    server {
+        listen       80;
+        listen       [::]:80;
+        server_name  _;
+        root         /usr/share/nginx/html;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        location = / {
             proxy_pass  http://localhost:8081;
+        }
+
+        error_page 404 /404.html;
+        location = /404.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+        }
+    }
 ```
+
 </details>
 
 <details>
@@ -188,16 +236,12 @@ firewall-cmd --reload
 #
 #################################
 
-# Start GoApp by running the "nohup go run main.go &" command from "/home/bob/go-app/" directory
+# Compile and run go-app from "/home/bob/go-app/" directory
+# Do the compile in the foreground so as not to have to poll a background task for completion
 pushd /home/bob/go-app
-nohup go run main.go &
+go build -o go-app .
+nohup ./go-app &
 
-# Wait for it to be running (usually 15-20 seconds as it has to compile first)
-while ! ps -faux | grep -P '/tmp/go-build\d+/\w+/exe/main'
-do
-    sleep 2
-done
-sleep 2
 popd
 
 #################################
@@ -207,8 +251,8 @@ popd
 #################################
 
 # Configure Nginx as a reverse proxy for the GoApp so that we can access the GoApp on port "80"
-# Do this by inserting a proxy_pass line after "location / {" at line 48
-sed -i '48i\            proxy_pass  http://localhost:8081;' /etc/nginx/nginx.conf
+# Do this by inserting a location stanza for root path at line 47 specifying the proxy pass to the go app
+sed -i '47i\        location / {\n\            proxy_pass  http://localhost:8081;\n        }\n' /etc/nginx/nginx.conf
 
 # Start nginx
 systemctl enable nginx
@@ -221,7 +265,15 @@ systemctl start nginx
 #################################
 
 # bob is able to login into GoApp using username "test" and password "test"
-curl -u test:test http://localhost:80 || echo -e "\n\nBob cannot log in!"
+if curl -s -u test:test http://localhost:80 > /dev/null
+then
+    echo
+    echo "Success! Bob logged in!"
+    echo "Press 'Check' button to complete lab"
+else
+    echo
+    echo "Bob cannot log in!"
+fi
 }
 ```
 </details>
