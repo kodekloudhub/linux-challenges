@@ -171,6 +171,7 @@ Then
 #
 #################################
 
+echo "Find"
 mkdir -p /opt/appdata/hidden
 mkdir -p /opt/appdata/files
 # Hidden files
@@ -186,6 +187,7 @@ rm -f $(find /opt/appdata/ -type f  -exec grep -l 't\>' "{}"  \; )
 #
 #################################
 
+echo "Replace"
 # Change all the occurrences of the word "yes" to "no"
 find /opt/appdata -type f -name "*" -exec sed -i 's/\byes\b/no/g' "{}" \;
 # Change all the occurrences of the word "raw" to "processed"
@@ -197,6 +199,7 @@ find /opt/appdata -type f -name "*" -exec sed -i 's/\braw\b/processed/ig' "{}" \
 #
 #################################
 
+echo "appdata.tar.gz"
 # Create a "tar.gz" archive of "/opt/appdata" directory and save the archive to this file: "/opt/appdata.tar.gz"
 cd /opt
 tar -zcf appdata.tar.gz appdata
@@ -207,6 +210,7 @@ tar -zcf appdata.tar.gz appdata
 #
 #################################
 
+echo "Permissions"
 # Sticky bit
 chmod +t /opt/appdata
 # Make bob owner
@@ -220,6 +224,7 @@ chmod 440 /opt/appdata.tar.gz
 #
 #################################
 
+echo "Softlink"
 ln -s /opt/appdata.tar.gz /home/bob/appdata.tar.gz
 
 #################################
@@ -228,6 +233,7 @@ ln -s /opt/appdata.tar.gz /home/bob/appdata.tar.gz
 #
 #################################
 
+echo "Filter"
 cat <<'EOF' > /home/bob/filter.sh
 #!/bin/bash
 
@@ -242,8 +248,11 @@ chmod +x /home/bob/filter.sh
 #
 #################################
 
+echo "Filtered.txt"
 # Execute our script
 /home/bob/filter.sh
+
+echo "Complete!"
 }
 ```
 </details>
